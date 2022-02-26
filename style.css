@@ -1,0 +1,292 @@
+/* universal applies to all */
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+}
+
+html{
+	font-size: 62.5%;
+}
+
+/* 1 hamburger menu */
+
+.hamburger-menu{
+	width: 3rem;
+	height: 3rem;
+	position: fixed;
+	/*background-color: black;*/
+	top: 5rem;
+	right: 5rem;
+	z-index: 200;
+	display: flex; /* one upon one*/
+	flex-direction: column;
+	justify-content: space-evenly;
+	cursor: pointer;
+	/*border-radius: 5px;*/
+	transition: right .6s; /* used to move hamburger menu icon*/
+
+}
+
+.change .hamburger-menu{
+	right: 33rem;	/* used to move hamburger menu icon*/
+}
+
+.line{
+	width: 100%;
+	height: 0.2rem;
+	background-color: white;
+	transition: transform .6s;
+}
+
+.change .line-1{		/* rotates line-1 */
+	transform: rotate(45deg) translate(0.3rem, 0.8rem);
+}
+
+.change .line-2{
+	opacity: 0;
+	visibility: hidden;
+}
+
+.change .line-3{		/* rotates line-2*/
+	transform: rotate(-45deg) translate(0.3rem, -0.8rem);
+}
+
+
+.hamburger-menu span{
+	position: absolute;
+	left: 5rem;
+	width: 10rem;
+	height: 4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: whitesmoke;
+	color: orange;
+	font-size: 1.3rem;
+	font-family: "Boloo Da 2",sans-serif;
+	letter-spacing: 0.1rem;
+	border-radius: 50% 0 0 50%;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.5s;
+}
+
+.change .hamburger-menu:hover span{
+	opacity: 1;
+	visibility: visible;
+}
+
+/*  2. header, 
+	2.1. background-image
+		(b.image), 	
+	2.2. banner
+		(heading,para,button)
+*/
+
+/* 2. header */
+
+.header{
+	width: 100%;
+	height: 100vh;
+	position: relative; /* banner poition */
+	perspective: 100rem; /* for 3d animation */
+	overflow: hidden; 
+}
+
+/* 2.1 b.image */
+
+.background-image{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	overflow: hidden; /* animation for 
+	                     background image */
+}
+
+.background-image img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.5;
+	animation: scale 2s;
+}
+
+/* animation for background */
+
+@keyframes scale{
+	0%{
+		transform: scale(1.5);
+	}
+	100%{
+		transform: scale(1.0);
+	}
+}
+
+/* 2.2 banner */
+
+.banner{
+	position: absolute;
+	top: 30%;
+	left: 15%;
+}
+
+.banner h1{
+	font-family: "Baloo Da 2",serif;
+	font-size: 5rem;
+	font-weight: 300;
+	color: white;
+	width: 50%;
+	line-height: 4.7rem;
+	letter-spacing: 0.2rem;
+	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	animation: moveBanner 1s .5s forwards;
+}
+
+.banner p{
+	font-family: "Josefin Slab",serif;
+	font-size: 2.5rem;
+	color: white;
+	width: 70%;
+	letter-spacing: 0.1rem;
+	margin-bottom: 3rem;
+	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	animation: moveBanner 1s .7s forwards;
+}
+
+.banner button{
+	font-family: "Muli", sans-serif;
+	width: 18rem;
+	height: 5rem;
+	background-color: orange;
+	border: none;
+	color: white;
+	font-weight: bolder;
+	letter-spacing: 0.1rem;
+	border-radius: 3px 25px 25px 25px;
+	cursor: pointer;
+	text-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	animation: moveBanner 1s .9s forwards;
+	transition: all .2s;
+}
+
+.banner button:hover{
+	width: 17rem;
+	height: 4.5rem;
+	font-size: 1.2rem;
+}
+
+@keyframes moveBanner{
+	0%{
+		transform: translateY(50rem) rotate(-90deg);
+	}
+	100%{
+		transform: translateY(0) rotate(0);
+		opacity: 1;
+	}
+}
+
+/* 3 navigation bar */
+
+.sidebar{
+	width: 40rem;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: -40rem;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 50% 0 0 50%;
+	transition: right 0.5s;
+}
+
+.change .sidebar {
+	right: 0;
+}
+
+/* 3.1 navigation bar list */
+
+.menu{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.m-i{
+	text-align: center;
+}
+
+.m-l{
+	font-family: "Baloo Da 2",sans-serif;
+	font-size: 3rem;
+	color: ghostwhite;
+	position: relative;
+	transition: font-size 0.2s;
+}
+
+.m-l:hover{
+	font-size: 3.8rem;
+}
+
+/*
+.m-l::before{
+	content: attr(data-content);
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: orange;
+	width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	transition: width 0.3s ease-in-out;
+}
+
+.m-l:hover::before{
+	width: 100%;
+}*/
+
+
+/* 3.2 social media */
+
+.social-media{
+	bottom: 3rem;
+	position: absolute;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.social-media i{
+	font-size: 2.2rem;
+	margin: 3rem;
+	width: 4.5rem;
+	height: 4.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 10px 25px 25px 25px;
+	color: white;
+	transition: all .2s;
+}
+
+
+.social-media i:hover{
+	background-color: orange;
+	width: 5.5rem;
+	height: 5.5rem;
+	transform: rotate(45deg);
+}
+
+
+
+
+
+
+
